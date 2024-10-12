@@ -1,0 +1,176 @@
+package com.Rajvardhan;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Program {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int choice, ipid;
+		String ipname, ipauthor, ipsubject;
+		
+		double ipprice;
+		do {
+			int count = 0;
+			List<Book> lbk = new ArrayList<Book>();
+			List<Customer> lck = new ArrayList<Customer>>();
+			List<String> lbs = new ArrayList<String>();
+			System.out.println("========================MENU DRIVE==========================");
+			System.out.println("1. DISPLAY ALL BOOKS.");
+			System.out.println("2. INSERT BOOK DATA.");
+			System.out.println("3. UPDATE BOOK DETAILS.");
+			System.out.println("4. DELETE BOOK DETAILS.");
+			System.out.println("5. FIND BY BOOK ID.");
+			System.out.println("6. FIND BY BOOK SUBJECT.");
+			System.out.println("7. FIND ALL SUBJECTS.");
+			System.out.println("8. DISPLAY ALL CUSTOMERS");
+			System.out.println("9. FIND CUSTOMER BY EMAIL.");
+			System.out.println("10. INSERT CUSTOMER DETAILS");
+			System.out.println("11. EXIT");
+			System.out.println("=============================================================");
+			System.out.print("Enter your choice ::");
+			choice = sc.nextInt();
+			sc.nextLine();
+			switch (choice) {
+			case 1:
+				try (BookDataAccess obj = new BookDataAccess()) {
+					lbk = obj.findAll();
+					for (Book book : lbk) {
+						System.out.println("Printing -->" + book);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+
+			case 2:
+				System.out.print("Enter the Book Name    ::");
+				ipname = sc.nextLine();
+				System.out.print("Enter the Book Author  ::");
+				ipauthor = sc.nextLine();
+				System.out.print("Enter the Book Subject ::");
+				ipsubject = sc.nextLine();
+				System.out.print("Enter the Book Price   ::");
+				ipprice = sc.nextDouble();
+				try (BookDataAccess obj = new BookDataAccess()) {
+					count = obj.save(new Book(0, ipname, ipauthor, ipsubject, ipprice));
+					if (count == 1)
+						System.out.println("Book Inserted Successfully..!");
+					else
+						System.out.printf("Input MissMatch Error...!\n");
+					lbk = obj.findAll();
+					for (Book book : lbk) {
+						System.out.println("Printing -->" + book);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+
+			case 3:
+				System.out.print("Book ID (To Update)  ::");
+				ipid = sc.nextInt();
+				sc.nextLine();
+				System.out.print("Enter the Book Name    ::");
+				ipname = sc.nextLine();
+				System.out.print("Enter the Book Author  ::");
+				ipauthor = sc.nextLine();
+				System.out.print("Enter the Book Subject ::");
+				ipsubject = sc.nextLine();
+				System.out.print("Enter the Book Price   ::");
+				ipprice = sc.nextDouble();
+
+				try (BookDataAccess obj = new BookDataAccess()) {
+					count = obj.update(new Book(ipid, ipname, ipauthor, ipsubject, ipprice));
+					if (count == 1)
+						System.out.println("Book Updated Successfully..!\n");
+					else
+						System.out.printf("Error 404 Id not found...!\n");
+					lbk = obj.findAll();
+					for (Book book : lbk) {
+						System.out.println("Printing -->" + book);
+					}
+				} catch (Exception e) {
+					System.err.println("Failed ...to insert (Input Match)");
+				}
+				break;
+
+			case 4:
+				System.out.print("Book ID (To Delete)  ::");
+				ipid = sc.nextInt();
+				try (BookDataAccess obj = new BookDataAccess()) {
+					count = obj.deleteById(ipid);
+					if (count == 1)
+						System.out.println("Book Deleted Successfully..!\n");
+					else
+						System.out.printf("Error 404 Id not found...!\n");
+					lbk = obj.findAll();
+					for (Book book : lbk) {
+						System.out.println("Printing -->" + book);
+					}
+				} catch (Exception e) {
+					System.err.println("Error...! Id not Found");
+				}
+				break;
+
+			case 5:
+				System.out.print("Book ID (To Find)  ::");
+				ipid = sc.nextInt();
+				try (BookDataAccess obj = new BookDataAccess()) {
+					Book b = obj.findById(ipid);
+					System.out.println(b.toString());
+				} catch (Exception e) {
+					System.err.println("Error...! Id not Found");
+				}
+				break;
+
+			case 6:
+				System.out.print("Book Subject (To Find)  ::");
+				ipsubject = sc.nextLine();
+				try (BookDataAccess obj = new BookDataAccess()) {
+					lbk = obj.findBySubject(ipsubject);
+					for (Book book : lbk) {
+						System.out.println("Printing -->" + book);
+					}
+				} catch (Exception e) {
+					System.err.println("Error...! Id not Found");
+				}
+				break;
+
+			case 7:
+				try (BookDataAccess obj = new BookDataAccess()) {
+					lbs =obj.findAllSubjects();
+					for (String string : lbs) {
+						System.out.println("Printing -->"+string);
+					}
+				} catch (Exception e) {
+					System.err.println("No subjects are Available...!");
+				}
+				break;
+			case 8:
+				try (CustomerDataAccess obj = new CustomerDataAccess()) {
+					lck = obj.findAllCustomer();
+					for (Book book : lbk) {
+						System.out.println("Printing -->" + book);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+				break;
+			case 9:
+
+				break;
+
+			default:
+
+				break;
+			}
+
+		} while (choice != 11);
+
+		sc.close();
+	}
+}

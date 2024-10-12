@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+E:\D-Mobile Computing\JAVA ADVANCE\DAY 02\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2272649467.index
+2722415578.index
+4162571202.index
+1863681858.index
+1898636510.index
+3125284984.index
