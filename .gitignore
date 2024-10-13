@@ -1,1 +1,8 @@
+# Ignore all compiled Java class files
 *.class
+
+# Ignore Eclipse .metadata directory
+.metadata/
+
+# Ignore Servers directory
+Servers/
