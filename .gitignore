@@ -1,8 +1,8 @@
-# Ignore all compiled Java class files
+# Ignore all compiled Java class files in all directories
 *.class
 
-# Ignore Eclipse .metadata directory
-.metadata/
+# Ignore .metadata directories in any DAY* folder
+DAY*/.metadata/
 
-# Ignore Servers directory
-Servers/
+# Ignore Servers directories in any DAY* folder
+DAY*/Servers/
