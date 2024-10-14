@@ -23,7 +23,7 @@ public class MyServletBook_Insert extends HttpServlet {
 		processRequest(req, resp);
 	}
 
-	private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		String name = req.getParameter("name");
@@ -67,7 +67,6 @@ public class MyServletBook_Insert extends HttpServlet {
 					out.println("</tr>");
 				}
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				throw new ServletException();
 			}
@@ -77,7 +76,8 @@ public class MyServletBook_Insert extends HttpServlet {
 			out.println("</html>");
 		}
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
+			throw new ServletException();
 		}
 		
 	}

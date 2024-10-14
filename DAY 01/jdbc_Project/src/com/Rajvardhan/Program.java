@@ -109,7 +109,6 @@ public class Program {
 					System.err.println("Failed ...to Update (Input Match)");
 				}
 				break;
-
 			case 4:
 				System.out.printf("\t\t\t******DELETE BY ID******\n");
 				System.out.print("Book ID (To Delete)  ::");
@@ -192,7 +191,7 @@ public class Program {
 				Date ipdate = Date.valueOf(temp);
 
 				try (CustomerDataAccess obj = new CustomerDataAccess()) {
-					count = obj.save(new Customer(0, ipname, ipauthor, ipsubject, ipmail, ippasswd, ipdate));
+					count = obj.save(new Customer(0, ipname, ippasswd, ipsubject, ipauthor, ipmail, ipdate));
 					if (count == 1)
 						System.out.println("Customer Inserted Successfully..!");
 					displayCustomer();
