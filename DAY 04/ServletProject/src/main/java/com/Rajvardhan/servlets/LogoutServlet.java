@@ -1,7 +1,6 @@
 package com.Rajvardhan.servlets;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(value = "/addtocart")
 @SuppressWarnings("serial")
-public class AddCartServlet extends HttpServlet {
+@WebServlet(value = "/logout", loadOnStartup = 6)
+public class LogoutServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		processRequest(req, resp);
@@ -24,24 +23,9 @@ public class AddCartServlet extends HttpServlet {
 	}
 
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		session.invalidate();
 		
-		String[] bookIds = req.getParameterValues("bookName");
-
-		if (bookIds == null || bookIds.length == 0) {
-			resp.sendRedirect("/ServletProject/pages/SubjectFailed.html");
-		} else {
-			
-			HttpSession session = req.getSession();
-			
-			@SuppressWarnings("unchecked")
-			List<Integer> items = (List<Integer>) session.getAttribute("items");
-			for (String book : bookIds) {
-				int id = Integer.parseInt(book);
-				items.add(id);
-			}
-			resp.sendRedirect("Subjects");
-		}
-
+		resp.sendRedirect("/ServletProject/pages/Logout.html");
 	}
-
 }

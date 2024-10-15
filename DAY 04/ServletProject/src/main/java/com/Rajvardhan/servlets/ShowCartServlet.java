@@ -34,10 +34,10 @@ public class ShowCartServlet extends HttpServlet {
 		out.println("<head>");
 		out.println("    <meta charset=\"UTF-8\">");
 		out.println("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-		out.println("    <title>Shopping Page</title>");
+		out.println("    <title>SHOPPING CART</title>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<center><hr><h3>Cart Iteams</h3><hr></center>");
+		out.println("<center><hr><h3>CART ITEMS</h3><hr></center>");
 		out.println("<table border='0' cellpadding='10'>");
 		out.println("<thead align='center'>" + "<th>NAME</th>" + "<th>AUTHOR</th>" + "<th>SUBJECT</th>"
 				+ "<th>PRICE</th>" + "</thead>");
@@ -58,6 +58,8 @@ public class ShowCartServlet extends HttpServlet {
 			e.printStackTrace();
 			throw new ServletException(e);
 		}
+		out.println("<tr>"
+				+ "<td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='/ServletProject/pages/Logout.html'><button>Log Out</button></a></p></td></tr>");
 		out.println("<br>");
 		out.println("</table>");
 		out.println("</body>");

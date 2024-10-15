@@ -41,7 +41,7 @@ public class BooksServlet extends HttpServlet {
 		out.println("    <title>Book Page</title>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<center><hr><h3>Displaying Books</h3><hr></center>");
+		out.println("<center><hr><h3>DISPLAYLING BOOKS</h3><hr></center>");
 		out.println("<form action='addtocart' method='POST'>");
 		out.println("<table border='0' cellpadding='10'>");
 		out.println("<thead align='center'>" + "<th>SELECT</th>" + "<th>NAME</th>" + "<th>AUTHOR</th>"

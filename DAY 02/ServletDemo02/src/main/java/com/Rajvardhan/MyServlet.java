@@ -24,7 +24,7 @@ public class MyServlet extends HttpServlet {
 		out.println("<hr>");
 		out.println("<h1><center>SERVLET WITH JDBC<center></h1>");
 		out.println("<hr>");
-		try(BookDataAccess obj =new BookDataAccess()) {
+		try (BookDataAccess obj = new BookDataAccess()) {
 			List<Book> list = obj.findAll();
 			out.println("<center>");
 			out.println("<table border=2>");
@@ -35,18 +35,17 @@ public class MyServlet extends HttpServlet {
 			out.printf("<th>SUBJECT</th>");
 			out.printf("<th>PRICE</th>");
 			out.println("</thead>");
-			
+
 			for (Book book : list) {
 				out.println("<tr>");
-				out.printf("<td>%s</td>",book.getBookId());
-				out.printf("<td>%s</td>",book.getBookName());
-				out.printf("<td>%s</td>",book.getBookAuthor());
-				out.printf("<td><input type=radio name=subject/>%s</td>",book.getBookSubject());
-				out.printf("<td>%s</td>",book.getBookPrice());
+				out.printf("<td>%s</td>", book.getBookId());
+				out.printf("<td>%s</td>", book.getBookName());
+				out.printf("<td>%s</td>", book.getBookAuthor());
+				out.printf("<td><input type=radio name=subject/>%s</td>", book.getBookSubject());
+				out.printf("<td>%s</td>", book.getBookPrice());
 				out.println("</tr>");
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new ServletException();
 		}

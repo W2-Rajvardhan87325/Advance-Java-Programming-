@@ -28,20 +28,35 @@ public class LoginServlet extends HttpServlet {
 		processRequest(req, resp);
 	}
 
+	// User Defined Service Method
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// Content Type HTML
 		resp.setContentType("text/html");
+
+		// Fetching the value from Login.html
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
-		HttpSession session = req.getSession();
+
 		try (CustomerDataAccess custdao = new CustomerDataAccess()) {
 			Customer cust = custdao.findByEmail(email);
+			// Checking the user passwd with DB passwd
 			if (cust != null && password.equals(cust.getCustPsswd())) {
-				resp.sendRedirect("Subjects");
-		
+
+				// On Successful login started the session for the addcart (Empty Cart)
 				List<Integer> items = new ArrayList<Integer>();
+				HttpSession session = req.getSession();
 				session.setAttribute("items", items);
+
+				// Redirection for admin and user login
+				if (cust.getCustPsswd().equals("admin") && cust.getCustName().equals("admin")) {
+					resp.sendRedirect("booklist");
+				} else {
+					resp.sendRedirect("Subjects");
+				}
 				
-			} else {
+			}
+			//Redirection to LoginFailed.html when the user fails.
+			else {
 				resp.sendRedirect("/ServletProject/pages/LoginFailed.html");
 			}
 		} catch (Exception e) {

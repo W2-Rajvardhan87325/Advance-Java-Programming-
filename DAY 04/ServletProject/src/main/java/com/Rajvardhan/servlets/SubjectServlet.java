@@ -37,7 +37,7 @@ public class SubjectServlet extends HttpServlet {
 		out.println("    <title>Subject Page</title>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<center><hr><h3>Displaying Subjects</h3><hr></center>");
+		out.println("<center><hr><h3>DISPLAY SUBJECTS</h3><hr></center>");
 
 		out.println("<form action='books' method='POST'>");
 		out.println("<fieldset>");
@@ -62,7 +62,7 @@ public class SubjectServlet extends HttpServlet {
 		out.println("</tr>");
 		out.println("</form>");
 		out.println("<tr>");
-		out.println("<td><a href=\"showcart\">Show Cart</a></td>");
+		out.println("<td><button><a href=\"showcart\">Show Cart</a></button></td>");
 		out.println("</tr>");
 		out.println("</body>");
 		out.println("</html>");
