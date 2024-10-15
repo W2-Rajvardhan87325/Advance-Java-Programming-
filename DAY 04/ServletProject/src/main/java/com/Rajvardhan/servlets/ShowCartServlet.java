@@ -16,6 +16,7 @@ import com.Rajvardhan.entities.Book;
 
 @WebServlet(value = "/showcart", loadOnStartup = 5)
 @SuppressWarnings("serial")
+
 public class ShowCartServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,9 +27,12 @@ public class ShowCartServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		processRequest(req, resp);
 	}
-
+	
+	// User Defined Service Method
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
+		
+		//HTML Head
 		out.println("<!DOCTYPE html>");
 		out.println("<html lang=\"en\">");
 		out.println("<head>");
@@ -36,14 +40,20 @@ public class ShowCartServlet extends HttpServlet {
 		out.println("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
 		out.println("    <title>SHOPPING CART</title>");
 		out.println("</head>");
+		
+		//HTML Body
 		out.println("<body>");
 		out.println("<center><hr><h3>CART ITEMS</h3><hr></center>");
 		out.println("<table border='0' cellpadding='10'>");
 		out.println("<thead align='center'>" + "<th>NAME</th>" + "<th>AUTHOR</th>" + "<th>SUBJECT</th>"
 				+ "<th>PRICE</th>" + "</thead>");
+		
+		//Accessing the values of the session from AddCartServlet.java
 		HttpSession session = req.getSession();
 		@SuppressWarnings("unchecked")
 		List<Integer> items = (List<Integer>) session.getAttribute("items");
+		
+		//Printing the values of selected bookIds from the addcart.
 		try (BookDataAccess obj = new BookDataAccess()) {
 			for (Integer id : items) {
 				Book b = obj.findById(id);
@@ -58,6 +68,8 @@ public class ShowCartServlet extends HttpServlet {
 			e.printStackTrace();
 			throw new ServletException(e);
 		}
+		
+		//HTML Footer
 		out.println("<tr>"
 				+ "<td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='/ServletProject/pages/Logout.html'><button>Log Out</button></a></p></td></tr>");
 		out.println("<br>");

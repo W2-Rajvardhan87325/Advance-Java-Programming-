@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 @SuppressWarnings("serial")
 @WebServlet(value = "/logout", loadOnStartup = 6)
+
 public class LogoutServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,9 +24,12 @@ public class LogoutServlet extends HttpServlet {
 	}
 
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		//Destroying the session
 		HttpSession session = req.getSession();
 		session.invalidate();
 		
+		//Redirecting to the Logout page
 		resp.sendRedirect("/ServletProject/pages/Logout.html");
 	}
 }

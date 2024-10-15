@@ -25,8 +25,10 @@ public class SubjectServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		processRequest(req, resp);
 	}
+	
 	// User Defined Service Method
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		// Content Type HTML
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
@@ -60,12 +62,14 @@ public class SubjectServlet extends HttpServlet {
 			e.printStackTrace();
 			throw new ServletException();
 		}
+
 		out.println("</fieldset>");
 		out.println("<br>");
 		out.println("<tr>");
 		out.println("<td><input type='submit' value='Get Books'></td>");
 		out.println("</tr>");
 		out.println("</form>");
+		
 		//HTML Footer
 		out.println("<tr>");
 		out.println("<td><button><a href=\"showcart\">Show Cart</a></button></td>");

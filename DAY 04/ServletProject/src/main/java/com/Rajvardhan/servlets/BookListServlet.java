@@ -15,6 +15,7 @@ import com.Rajvardhan.entities.Book;
 
 @SuppressWarnings("serial")
 @WebServlet(value = "/booklist")
+
 public class BookListServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,17 +27,25 @@ public class BookListServlet extends HttpServlet {
 		processRequest(req, resp);
 	}
 
+	// User Defined Service Method
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		// Content Type HTML
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
+		
+		//HTML Head
 		out.println("<html>");
 		out.println("<head>");
 		out.println("<title>Books List Page</title>");
 		out.println("</head>");
+		
+		//HTML Body
 		out.println("<body>");
 		out.println("<hr>");
 		out.println("<h3><center>ADMIN PANEL<center></h3>");
 		out.println("<hr>");
+		
 		try (BookDataAccess obj = new BookDataAccess()) {
 			List<Book> list = obj.findAll();
 			out.println("<center>");
@@ -59,6 +68,7 @@ public class BookListServlet extends HttpServlet {
 				out.printf("<td>%s</td>", book.getBookAuthor());
 				out.printf("<td>%s</td>", book.getBookSubject());
 				out.printf("<td>%s</td>", book.getBookPrice());
+				//Setting the images as hyperlink in the Table.
 				out.printf(
 						"<td align='center'><a href='editbook?bookId=%d'><img src='images/Edit.png' alt='Edit' width='26' height='26'/></a></td>",
 						book.getBookId());
@@ -76,23 +86,22 @@ public class BookListServlet extends HttpServlet {
 		if (message != null)
 			out.println("<h5>" + message + "</h5>");
 		out.println("</fieldset>");
-
 		out.println("</center>");
 		out.println("<br>");
+		
+		//HTML Footer
+		//Creating the table for 2 buttons
 		out.printf("<table align='center' cellpadding='10'>\r\n");
-		out.printf("<tr>\r\n");
-
+		out.printf("<tr>\r\n");		
 		out.printf("<td>\r\n");
 		out.printf("<p><a href='/ServletProject/pages/Logout.html'><button>Sign Out</button></a></p>\r\n");
 		out.printf("</td>\r\n");
-
 		out.printf("<td>\r\n");
 		out.printf("<p><a href='/ServletProject/pages/AddBook.html'><button>Add Book</button></a></p>\r\n");
 		out.printf("</td>\r\n");
-
 		out.printf("</tr>\r\n");
+		
 		out.printf("</table>\r\n");
-
 		out.println("</body>");
 		out.println("</html>");
 
