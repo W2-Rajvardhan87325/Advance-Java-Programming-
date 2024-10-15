@@ -14,6 +14,7 @@ import com.Rajvardhan.dataaccess.BookDataAccess;
 
 @SuppressWarnings("serial")
 @WebServlet(value = "/Subjects", loadOnStartup = 3)
+
 public class SubjectServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,11 +25,13 @@ public class SubjectServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		processRequest(req, resp);
 	}
-
+	// User Defined Service Method
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// Content Type HTML
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 
+		//HTML Head
 		out.println("<!DOCTYPE html>");
 		out.println("<html lang=\"en\">");
 		out.println("<head>");
@@ -36,13 +39,16 @@ public class SubjectServlet extends HttpServlet {
 		out.println("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
 		out.println("    <title>Subject Page</title>");
 		out.println("</head>");
+		
+		//HTML Body
 		out.println("<body>");
 		out.println("<center><hr><h3>DISPLAY SUBJECTS</h3><hr></center>");
-
 		out.println("<form action='books' method='POST'>");
 		out.println("<fieldset>");
 		out.println("<legend><b><u>Select a Subject:</u></b></legend>");
 		out.println("<table border='0' cellpadding='10'>");
+		
+		//Displaying the Subjects with Radio Button using table.
 		try (BookDataAccess obj = new BookDataAccess()) {
 			List<String> list = obj.findAllSubjects();
 			for (String sub : list) {
@@ -54,13 +60,13 @@ public class SubjectServlet extends HttpServlet {
 			e.printStackTrace();
 			throw new ServletException();
 		}
-
 		out.println("</fieldset>");
 		out.println("<br>");
 		out.println("<tr>");
 		out.println("<td><input type='submit' value='Get Books'></td>");
 		out.println("</tr>");
 		out.println("</form>");
+		//HTML Footer
 		out.println("<tr>");
 		out.println("<td><button><a href=\"showcart\">Show Cart</a></button></td>");
 		out.println("</tr>");

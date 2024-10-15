@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 		// Content Type HTML
 		resp.setContentType("text/html");
 
-		// Fetching the value from Login.html
+		// Fetching the data from Login.html
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
 
