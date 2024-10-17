@@ -41,8 +41,8 @@ public class EditBookServlet extends HttpServlet{
 			out.printf("</head>\r\n");
 
 			//HTML Body
-			out.printf("<hr><h3 align='center'>UPDATE BOOK DETAILS</h3>r\n");
-			out.printf("<table cellpadding='10'>\r\n");
+			out.printf("<hr><h3 align='center'>UPDATE BOOK DETAILS</h3>\n");
+			out.printf("<table cellpadding='10'>\n");
 			out.printf("<tr><td><button><a href='booklist'>Go Back</a></button></td><td></td><tr>\r\n");
 			out.printf("</table>");
 			out.printf("<form method='post' action='editbook'>\r\n");
