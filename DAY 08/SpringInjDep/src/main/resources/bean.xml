@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="pb1" class="com.rajvardhan.Person">
+		<property name="name" value="Rajvardhan" />
+		<property name="email" value="raj2003patil@gmail.com" />
+		<property name="address" value="Kodoli,Warananagar" />
+		<property name="mobile" value="9075857927" />
+	</bean>
+
+	<bean id="accb1" class="com.rajvardhan.Account">
+		<constructor-arg index="0" value="SBIN40306" />
+		<constructor-arg index="1" value="Saving" />
+		<constructor-arg index="2" value="10000.0" />
+		<constructor-arg index="3" ref="pb1" />
+	</bean>
+</beans>

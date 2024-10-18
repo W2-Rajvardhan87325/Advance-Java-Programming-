@@ -33,9 +33,9 @@ ${blsObj.fetchBooks()}
 						<td>${bk.bookAuthor}</td>
 						<td>${bk.bookSubject}</td>
 						<td>${bk.bookPrice}</td>
-						<td align='center'><a href='editbook?bookId=${bk.bookId}'><img
+						<td align='center'><a href='EditBook.jsp?bookId=${bk.bookId}'><img
 								src='images/Edit.png' alt='Edit' width='26' height='26' /></a></td>
-						<td align='center'><a href='delbook?bookId=${bk.bookId}'><img
+						<td align='center'><a href='DeleteBook.jsp?bookId=${bk.bookId}'><img
 								src='images/Delete.png' alt='Delete' width='28' height='28' /></a></td>
 					</tr>
 				</c:forEach>
@@ -48,14 +48,14 @@ ${blsObj.fetchBooks()}
 		<tr>
 			<td>
 				<p>
-					<a href='/ServletProject/pages/Logout.html'>
+					<a href='Logout.jsp'>
 						<button>Sign Out</button>
 					</a>
 				</p>
 			</td>
 			<td>
 				<p>
-					<a href='/ServletProject/pages/AddBook.html'>
+					<a href='AddBook.jsp'>
 						<button>Add Book</button>
 					</a>
 				</p>
