@@ -8,11 +8,11 @@ public class EditBookBean {
 	private Book bk;
 	private Book upbk;
 
-	private String id;
+	private int id;
 	private String name;
 	private String author;
 	private String subject;
-	private String price;
+	private double price;
 
 	public EditBookBean() {
 	}
@@ -35,7 +35,7 @@ public class EditBookBean {
 
 	// =============================================================
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -51,11 +51,11 @@ public class EditBookBean {
 		return subject;
 	}
 
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -71,7 +71,7 @@ public class EditBookBean {
 		this.subject = subject;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -84,8 +84,7 @@ public class EditBookBean {
 	}
 
 	public void updateBook() {
-		double changePrice = Double.parseDouble(price);
-		upbk = new Book(0, id, author, subject, changePrice);
+		upbk = new Book(id, name, author, subject, price);
 		try (BookDataAccess obj = new BookDataAccess()) {
 			obj.update(upbk);
 		} catch (Exception e) {
