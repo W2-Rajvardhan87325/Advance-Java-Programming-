@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register Customer</title>
+</head>
+<body>
+	<hr>
+	<h3 align="center">REGISTRATION FORM</h3>
+	<hr>
+	<div align="center">
+		<fieldset style="width: 600px;">
+			<form action="/ServletProject/registercust" method="POST">
+				<table cellpadding='10'>
+					<tbody>
+						<tr>
+							<td>Customer
+								Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::</td>
+							<td><input type="text" placeholder="enter your name"
+								autofocus="autofocus" name="name" required="required"></td>
+						</tr>
+						<tr>
+							<td>Customer
+								Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::</td>
+							<td><input type="password"
+								placeholder="enter your password " autofocus="autofocus"
+								name="password" required="required"></td>
+						</tr>
+						<tr>
+							<td>Customer
+								Mobile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::</td>
+							<td><input type="number" placeholder="enter your mobile "
+								autofocus="autofocus" name="mobile" required="required"></td>
+						</tr>
+						<tr>
+							<td>Customer
+								Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::</td>
+							<td><input type="text" placeholder="enter your address"
+								autofocus="autofocus" name="address" required="required"></td>
+						</tr>
+						<tr>
+							<td>Customer Email
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::</td>
+							<td><input type="email" placeholder="enter your email "
+								autofocus="autofocus" name="email" required="required"></td>
+						</tr>
+
+						<tr>
+							<td>BirthDate(yyyy-mm-dd)&nbsp;::</td>
+							<td><input type="date" placeholder="enter your birthdate "
+								autofocus="autofocus" name="birth" required="required"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="submit" value="Register"></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</fieldset>
+	</div>
+</body>
+</html>

@@ -1019,3 +1019,11 @@ java.io.FileNotFoundException: File C:\Program Files\Java\jdk-11.0.0.2\lib\ct.sy
 	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:160)
 	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:251)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.ui.ide 4 4 2024-10-20 17:41:16.141
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 2 1 2024-10-20 17:41:16.142
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2024-10-20 17:41:16.142
+!MESSAGE The project description file (.project) for 'Assignment01' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
