@@ -2,7 +2,7 @@
 *.class
 
 # Ignore .metadata directories in any DAY* folder
-DAY*/.metadata/
+.metadata/
 
 # Ignore Servers directories in any DAY* folder
-DAY*/Servers/
+Servers/
